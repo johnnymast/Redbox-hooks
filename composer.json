@@ -1,0 +1,34 @@
+{
+  "name": "redbox/hooks",
+  "description": "description_text",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Johnny Mast",
+      "email": "mastjohnny@gmail.com"
+    }
+  ],
+  "config": {
+    "disable-tls" : true
+  },
+  "autoload": {
+  "psr-4": {
+    "Redbox\\": "src/",
+    "Sandbox\\Hooks\\Demos\\": "demos/"
+  }
+},
+  "autoload-dev": {
+    "psr-4": {
+      "Redbox\\Hooks\\Tests\\": "tests/"
+    }
+  },
+  "require": {
+    "phpunit/phpunit": "4.8.24",
+    "doctrine/common": "2.7.x-dev"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.8.24",
+    "sebastian/peek-and-poke": "1.0.x-dev"
+  }
+}
