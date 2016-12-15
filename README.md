@@ -2,8 +2,8 @@
 
 # Redbox-hooks
 
-[![Build Status](https://travis-ci.org/johnnymast/Sandbox.svg?branch=master)](https://travis-ci.org/johnnymast/Sandbox)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/johnnymast/Sandbox/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/johnnymast/Sandbox/?branch=master)
+[![Build Status](https://travis-ci.org/johnnymast/redbox-hooks.svg?branch=master)](https://travis-ci.org/johnnymast/Sandbox)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/johnnymast/redbox-hooks/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/johnnymast/Sandbox/?branch=master)
 [![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&label=Contact%20author)](https://twitter.com/intent/tweet?text=@mastjohnny)
 
 Redbox-hooks allow you use Wordpress actions and filters in your own code. The syntax is easy to use as you expect it to be after seeing it in Wordpress it self.
