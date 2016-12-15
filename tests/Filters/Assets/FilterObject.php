@@ -5,6 +5,7 @@ namespace Redbox\Hooks\Tests\Filters\Assets;
  * This use statement is actually required.
  * Phpstorm does freak out about it.
  */
+use Redbox\Hooks\Annotations\Filter;
 use Redbox\Hooks\Filters;
 
 class FilterObject
