@@ -6,7 +6,7 @@ use Redbox\Hooks\Tests\Filters\Assets\FilterObject;
 
 /**
  * @since version 1.0
- * @covers Filters
+ * @covers Redbox\Hooks\Filters
  */
 class FilterObjectTest extends \PHPUnit_Framework_TestCase
 {
@@ -14,7 +14,7 @@ class FilterObjectTest extends \PHPUnit_Framework_TestCase
     /**
      * Test that Filter Object Loads the Objects correctly.
      *
-     * @covers Filters::registerFilterObject
+     * @covers Redbox\Hooks\Filters::registerFilterObject
      */
     public function testRegisterFilterObjectLoadsClasses()
     {
@@ -27,7 +27,7 @@ class FilterObjectTest extends \PHPUnit_Framework_TestCase
      * Test that Sandbox\Filters::applyFilter triggers a filter
      * inside the filter Object.
      *
-     * @covers Filters::applyFilter
+     * @covers Redbox\Hooks\Filters::applyFilter
      */
     public function testApplyFilterWorksOnFilterObject()
     {
@@ -45,7 +45,7 @@ class FilterObjectTest extends \PHPUnit_Framework_TestCase
      * Test that filters can be removed using Sandbox\Filters::removeFilter
      * from inside a filter Object.
      *
-     * @covers Filters::removeFilter
+     * @covers Redbox\Hooks\Filters::removeFilter
      */
     public function testFiltersCanBeRemovedFromInsideFilterObject()
     {

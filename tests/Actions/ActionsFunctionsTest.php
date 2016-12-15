@@ -5,7 +5,7 @@ use Redbox\Hooks\Actions;
 
 /**
  * @since version 1.0
- * @covers Actions
+ * @covers Redbox\Hooks\Actions
  */
 class ActionsFunctionsTest extends \PHPUnit_Framework_TestCase
 {
@@ -24,16 +24,16 @@ class ActionsFunctionsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Actions::doAction
+     * @covers Redbox\Hooks\Actions::doAction
      */
     public function testAddActionWorksCorrectWithOneAction()
     {
-        $actions = new \ReflectionClass('Sandbox\Actions');
+        $actions = new \ReflectionClass('Redbox\Hooks\Actions');
         $property = $actions->getProperty('actions');
         $property->setAccessible(true);
         $property->setValue([]);
 
-        Actions::addAction('echo_astrix', 'Sandbox\Tests\Actions\Assets\outputAstrixSymbol');
+        Actions::addAction('echo_astrix', 'Redbox\Hooks\Tests\Actions\Assets\outputAstrixSymbol');
 
         $expected = '*';
         $output = $this->captureTestOutput(
@@ -45,18 +45,18 @@ class ActionsFunctionsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Actions::doAction
+     * @covers Redbox\Hooks\Actions::doAction
      */
     public function testAddActionWorksCorrectWithTwoActions()
     {
-        $actions = new \ReflectionClass('Sandbox\Actions');
+        $actions = new \ReflectionClass('Redbox\Hooks\Actions');
         $property = $actions->getProperty('actions');
         $property->setAccessible(true);
         $property->setValue([]);
 
-        Actions::addAction('echo_astrix', 'Sandbox\Tests\Actions\Assets\outputAstrixSymbol');
+        Actions::addAction('echo_astrix', 'Redbox\Hooks\Tests\Actions\Assets\outputAstrixSymbol');
 
-        Actions::addAction('echo_at', 'Sandbox\Tests\Actions\Assets\outputAtSymbol');
+        Actions::addAction('echo_at', 'Redbox\Hooks\Tests\Actions\Assets\outputAtSymbol');
 
         $expected = '*@';
         $output = $this->captureTestOutput(
@@ -69,7 +69,7 @@ class ActionsFunctionsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Actions::doAction
+     * @covers Redbox\Hooks\Actions::doAction
      */
     public function testDoActionReturnsValueIfActionIsNotFound()
     {

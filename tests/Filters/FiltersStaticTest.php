@@ -1,16 +1,18 @@
 <?php
 namespace Redbox\Hooks\Tests\Filters;
 
+use Redbox\Hooks\Tests\Filters\Assets\MockClass1;
 use Redbox\Hooks\Filters;
+use Redbox\Hooks\Hook;
 
 /**
  * @since version 1.0
- * @covers Filters
+ * @covers Redbox\Hooks\Filters
  */
 class FiltersStaticTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @covers Filters::addFilter
+     * @covers Redbox\Hooks\Filters::addFilter
      */
     public function testAddFilterReturnsFalseOnEmptyTag()
     {
@@ -20,7 +22,7 @@ class FiltersStaticTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Filters::addFilter
+     * @covers Redbox\Hooks\Filters::addFilter
      */
     public function testAddFilterReturnsFalseOnEmptyCallback()
     {
@@ -30,7 +32,7 @@ class FiltersStaticTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Filters::addFilter
+     * @covers Redbox\Hooks\Filters::addFilter
      */
     public function testAddFilterReturnsTrueOnSuccess()
     {
@@ -44,11 +46,11 @@ class FiltersStaticTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Filters::addFilter
+     * @covers Redbox\Hooks\Filters::addFilter
      */
     public function testAddFilterAddsFilterCorrectly()
     {
-        $filters = new \ReflectionClass('Sandbox\Filters');
+        $filters = new \ReflectionClass('Redbox\Hooks\Filters');
         $property = $filters->getProperty('filters');
         $property->setAccessible(true);
         $property->setValue([]);
@@ -71,11 +73,11 @@ class FiltersStaticTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Filters::addFilter
+     * @covers Redbox\Hooks\Filters::addFilter
      */
     public function testAddFilterAddsMultipleFiltersCorrectly()
     {
-        $filters = new \ReflectionClass('Sandbox\Filters');
+        $filters = new \ReflectionClass('Redbox\Hooks\Filters');
         $property = $filters->getProperty('filters');
         $property->setAccessible(true);
         $property->setValue([]);
@@ -104,11 +106,11 @@ class FiltersStaticTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Filters::addFilter
+     * @covers Redbox\Hooks\Filters::addFilter
      */
     public function testAddFilterSortsPriorityCorrect()
     {
-        $filters = new \ReflectionClass('Sandbox\Filters');
+        $filters = new \ReflectionClass('Redbox\Hooks\Filters');
         $property = $filters->getProperty('filters');
         $property->setAccessible(true);
         $property->setValue([]);
@@ -141,16 +143,16 @@ class FiltersStaticTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Filters::addFilter
+     * @covers Redbox\Hooks\Filters::addFilter
      */
     public function testAddFilterInClassMethodHasTheCorrectCallback()
     {
-        $filters = new \ReflectionClass('Sandbox\Filters');
+        $filters = new \ReflectionClass('Redbox\Hooks\Filters');
         $property = $filters->getProperty('filters');
         $property->setAccessible(true);
         $property->setValue([]);
 
-        $instance = new Redbox\Hooks\Tests\Filters\Assets\MockClass1;
+        $instance = new MockClass1;
 
         $tag = 'manipulate_string';
         $priority = 10;
@@ -166,7 +168,7 @@ class FiltersStaticTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Filters::removeFilter
+     * @covers Redbox\Hooks\Filters::removeFilter
      */
     public function testRemoveFilterReturnsFalseOnEmptyTag()
     {
@@ -176,7 +178,7 @@ class FiltersStaticTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Filters::removeFilter
+     * @covers Redbox\Hooks\Filters::removeFilter
      */
     public function testRemoveFilterReturnsFalseOnEmptyCallback()
     {
@@ -186,7 +188,7 @@ class FiltersStaticTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Filters::removeFilter
+     * @covers Redbox\Hooks\Filters::removeFilter
      */
     public function testRemoveFilterReturnsTrueOnSuccess()
     {
@@ -202,7 +204,7 @@ class FiltersStaticTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Filters::removeFilter
+     * @covers Redbox\Hooks\Filters::removeFilter
      */
     public function testRemoveFilterActuallyRemovesTheFilter()
     {
@@ -225,11 +227,11 @@ class FiltersStaticTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Filters::removeFilter
+     * @covers Redbox\Hooks\Filters::removeFilter
      */
     public function testRemoveFilterRemovesTheFilterCorrectly()
     {
-        $filters = new \ReflectionClass('Sandbox\Filters');
+        $filters = new \ReflectionClass('Redbox\Hooks\Filters');
         $property = $filters->getProperty('filters');
         $property->setAccessible(true);
 
@@ -284,7 +286,7 @@ class FiltersStaticTest extends \PHPUnit_Framework_TestCase
         /**
          * Test callback is inside a class
          */
-        $instance = new Sandbox\Tests\Filters\Assets\MockClass1;
+        $instance = new MockClass1();
         Filters::removeFilter('manipulate_string', [$instance, 'prependChars']);
 
         $hook = new Hook('manipulate_string');
@@ -298,7 +300,7 @@ class FiltersStaticTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Filters::removeFilter
+     * @covers Redbox\Hooks\Filters::removeFilter
      */
     public function testRemoveFilterReturnsFalseIfFilterCouldNotBeFound()
     {
@@ -306,7 +308,7 @@ class FiltersStaticTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Filters::removeAllFilters
+     * @covers Redbox\Hooks\Filters::removeAllFilters
      */
     public function testRemoveAllFiltersReturnsFalseOnEmptyTag()
     {
@@ -316,7 +318,7 @@ class FiltersStaticTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Filters::removeAllFilters
+     * @covers Redbox\Hooks\Filters::removeAllFilters
      */
     public function testRemoveAllFiltersReturnsTrueOnSuccess()
     {
@@ -332,7 +334,7 @@ class FiltersStaticTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Filters::applyFilter
+     * @covers Redbox\Hooks\Filters::applyFilter
      */
     public function testApplyFilterReturnsValueIfActionIsNotFound()
     {

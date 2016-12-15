@@ -2,12 +2,12 @@
 namespace Redbox\Hooks\Annotations;
 
 use Doctrine\Common\Annotations\Reader;
-use Redbox\Hooks;
+use Redbox\Hooks\Filters;
 
 class FilterAnnotationHandler
 {
     private $reader;
-    private $annotationClass = 'Sandbox\Annotations\Filter';
+    private $annotationClass = 'Redbox\Hooks\Annotations\Filter';
 
     public function __construct(Reader $reader)
     {

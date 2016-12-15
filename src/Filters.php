@@ -2,7 +2,7 @@
 namespace Redbox\Hooks;
 
 use Doctrine\Common\Annotations\AnnotationReader;
-use Sandbox\Annotations\FilterAnnotationHandler;
+use Redbox\Hooks\Annotations\FilterAnnotationHandler;
 
 class Filters
 {

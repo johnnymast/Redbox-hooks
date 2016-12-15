@@ -1,19 +1,19 @@
 <?php
 namespace Sandbox\Tests\Hook;
 
-use Sandbox;
+use Redbox\Hooks\Hook;
 
 /**
  * @since version 1.0
- * @covers Sandbox\Hook
+ * @covers Redbox\Hooks\Hook
  */
 class HookTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
-     * Test that Sandbox\Hook::addHook adds new hooks correctly.
+     * Test that Redbox\Hooks\Hook::addHook adds new hooks correctly.
      *
-     * @covers Sandbox\Hook::addHook
+     * @covers Redbox\Hooks\Hook::addHook
      */
     public function testAddHookAddsNewHooksCorrectly()
     {
@@ -34,7 +34,7 @@ class HookTest extends \PHPUnit_Framework_TestCase
             ]
         ];
 
-        $hook = new Sandbox\Hook($tag);
+        $hook = new Hook($tag);
         $hook->addHook($priority, $callback);
         $actual = $hook->getHooks();
 
@@ -42,9 +42,9 @@ class HookTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test that Sandbox\Hook::getHooks returns an array of hooks.
+     * Test that Redbox\Hooks\Hook::getHooks returns an array of hooks.
      *
-     * @covers Sandbox\Hook::getHooks
+     * @covers Redbox\Hooks\Hook::getHooks
      */
     public function testGetHooksReturnsAnArrayOfHooks()
     {
@@ -55,7 +55,7 @@ class HookTest extends \PHPUnit_Framework_TestCase
         $tag = 'hook_tag';
         $priority = 2;
 
-        $hook = new Sandbox\Hook($tag);
+        $hook = new Hook($tag);
 
         $this->assertEmpty($hook->getHooks());
         $hook->addHook($priority, $callback);
@@ -65,10 +65,10 @@ class HookTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test that Sandbox\Hook::removeCallbackWithPriority removed one hook
+     * Test that Redbox\Hooks\Hook::removeCallbackWithPriority removed one hook
      * correctly.
      *
-     * @covers Sandbox\Hook::removeCallbackWithPriority
+     * @covers Redbox\Hooks\Hook::removeCallbackWithPriority
      */
     public function testRemoveCallbackWithPriorityRemovesTheHookCorrectly()
     {
@@ -79,7 +79,7 @@ class HookTest extends \PHPUnit_Framework_TestCase
         $tag = 'hook_tag';
         $priority = 2;
 
-        $hook = new Sandbox\Hook($tag);
+        $hook = new Hook($tag);
         $hook->addHook($priority, $callback);
 
         $hook->removeCallbackWithPriority($priority, $callback);
@@ -87,10 +87,10 @@ class HookTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test that Sandbox\Hook::removeCallbackWithPriority removes
+     * Test that Redbox\Hooks\Hook::removeCallbackWithPriority removes
      * multiple hooks correctly.
      *
-     * @covers Sandbox\Hook::removeCallbackWithPriority
+     * @covers Redbox\Hooks\Hook::removeCallbackWithPriority
      */
     public function testRemoveCallbackWithPriorityRemovesMultipleHooksCorrectly()
     {
@@ -114,7 +114,7 @@ class HookTest extends \PHPUnit_Framework_TestCase
             ]
         ];
 
-        $hook = new Sandbox\Hook($tag);
+        $hook = new Hook($tag);
         $hook->addHook($priority, $callback);
         $hook->addHook($priority, $callback2);
 
@@ -125,13 +125,13 @@ class HookTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test that Sandbox\Hook::removeAllHooks reset the hooks array.
+     * Test that Redbox\Hooks\Hook::removeAllHooks reset the hooks array.
      *
-     * @covers Sandbox\Hook::removeAllHooks
+     * @covers Redbox\Hooks\Hook::removeAllHooks
      */
     public function testRemoveAllHooksResetsTheActiveHooksToEmptyArray()
     {
-        $hook = new Sandbox\Hook('tag');
+        $hook = new Hook('tag');
         $hook->addHook(10, function () {
            /* void */
         });

@@ -5,16 +5,16 @@ use Redbox\Hooks\Filters;
 
 /**
  * @since version 1.0
- * @covers Filters
+ * @covers Redbox\Hooks\Filters
  */
 class FiltersChainedTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @covers Filters::applyFilter
+     * @covers Redbox\Hooks\Filters::applyFilter
      */
     public function testApplyFilterWorksCorrectWithOneClassMethod()
     {
-        $filters = new \ReflectionClass('Sandbox\Filters');
+        $filters = new \ReflectionClass('Redbox\Hooks\Filters');
         $property = $filters->getProperty('filters');
         $property->setAccessible(true);
         $property->setValue([]);
@@ -31,11 +31,11 @@ class FiltersChainedTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Filters::applyFilter
+     * @covers Redbox\Hooks\Filters::applyFilter
      */
     public function testApplyFilterWorksCorrectWithTwoClassMethods()
     {
-        $filters = new \ReflectionClass('Sandbox\Filters');
+        $filters = new \ReflectionClass('Redbox\Hooks\Filters');
         $property = $filters->getProperty('filters');
         $property->setAccessible(true);
         $property->setValue([]);

@@ -1,11 +1,12 @@
 <?php
 namespace Redbox\Hooks\Tests\Actions;
 
-use Redbox\Hooks;
+use Redbox\Hooks\Actions;
+use Redbox\Hooks\Tests\Actions\Assets\MockClass2;
 
 /**
  * @since version 1.0
- * @covers Actions
+ * @covers Redbox\Hooks\Actions
  */
 class ActionsClassesTest extends \PHPUnit_Framework_TestCase
 {
@@ -23,16 +24,16 @@ class ActionsClassesTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Actions::doAction
+     * @covers Redbox\Hooks\Actions::doAction
      */
     public function testDoActionWorksCorrectWithOneClassMethod()
     {
-        $actions = new \ReflectionClass('Sandbox\Actions');
+        $actions = new \ReflectionClass('Redbox\Hooks\Actions');
         $property = $actions->getProperty('actions');
         $property->setAccessible(true);
         $property->setValue([]);
 
-        $instance = new Redbox\Hooks\Tests\Actions\Assets\MockClass2;
+        $instance = new MockClass2();
 
 
         Actions::addAction('echo_astrix', [$instance, 'outputAstrixSymbol']);
@@ -47,16 +48,16 @@ class ActionsClassesTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Actions::doAction
+     * @covers Redbox\Hooks\Actions::doAction
      */
     public function testDoActionWorksCorrectWithTwoClassMethods()
     {
-        $actions = new \ReflectionClass('Sandbox\Actions');
+        $actions = new \ReflectionClass('Redbox\Hooks\Actions');
         $property = $actions->getProperty('actions');
         $property->setAccessible(true);
         $property->setValue([]);
 
-        $instance = new Sandbox\Tests\Actions\Assets\MockClass2;
+        $instance = new MockClass2();
 
 
         Actions::addAction('echo_astrix', [$instance, 'outputAstrixSymbol']);

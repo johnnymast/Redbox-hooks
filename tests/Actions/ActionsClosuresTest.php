@@ -1,11 +1,11 @@
 <?php
 namespace Sandbox\Tests\Actions;
 
-use Redbox\Hooks;
+use Redbox\Hooks\Actions;
 
 /**
  * @since version 1.0
- * @covers Actions
+ * @covers Redbox\Hooks\Actions
  */
 class ActionsClosuresTest extends \PHPUnit_Framework_TestCase
 {
@@ -24,11 +24,11 @@ class ActionsClosuresTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Actions::doAction
+     * @covers Redbox\Hooks\Actions::doAction
      */
     public function testDoActionWorksCorrectWithOneClosure()
     {
-        $actions = new \ReflectionClass('Sandbox\Actions');
+        $actions = new \ReflectionClass('Redbox\Hooks\Actions');
         $property = $actions->getProperty('actions');
         $property->setAccessible(true);
         $property->setValue([]);
@@ -47,11 +47,11 @@ class ActionsClosuresTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Actions::doAction
+     * @covers Redbox\Hooks\Actions::doAction
      */
     public function testDoActionWorksCorrectWithTwoClosures()
     {
-        $actions = new \ReflectionClass('Sandbox\Actions');
+        $actions = new \ReflectionClass('Redbox\Hooks\Actions');
         $property = $actions->getProperty('actions');
         $property->setAccessible(true);
         $property->setValue([]);

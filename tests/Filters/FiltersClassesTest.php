@@ -1,26 +1,27 @@
 <?php
 namespace Redbox\Hooks\Tests\Filters;
 
+use Redbox\Hooks\Tests\Filters\Assets\MockClass2;
 use Redbox\Hooks\Filters;
 
 /**
  * @since version 1.0
- * @covers Filters
+ * @covers Redbox\Hooks\Filters
  */
 class FiltersClassesTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @covers Filters::applyFilter
+     * @covers Redbox\Hooks\Filters::applyFilter
      */
     public function testApplyFilterWorksCorrectWithOneClassMethod()
     {
-        $filters = new \ReflectionClass('Sandbox\Filters');
+        $filters = new \ReflectionClass('Redbox\Hooks\Filters');
         $property = $filters->getProperty('filters');
         $property->setAccessible(true);
         $property->setValue([]);
 
         $string = 'Hello World';
-        $instance = new Sandbox\Tests\Filters\Assets\MockClass2;
+        $instance = new MockClass2;
 
         Filters::addFilter('prepend_chars', [$instance, 'prependChars']);
         $output = Filters::applyFilter('prepend_chars', $string);
@@ -30,17 +31,17 @@ class FiltersClassesTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Filters::applyFilter
+     * @covers Redbox\Hooks\Filters::applyFilter
      */
     public function testApplyFilterWorksCorrectWithTwoClassMethods()
     {
-        $filters = new \ReflectionClass('Sandbox\Filters');
+        $filters = new \ReflectionClass('Redbox\Hooks\Filters');
         $property = $filters->getProperty('filters');
         $property->setAccessible(true);
         $property->setValue([]);
 
         $string = 'Hello World';
-        $instance = new Sandbox\Tests\Filters\Assets\MockClass2;
+        $instance = new MockClass2;
 
         Filters::addFilter('apply_chars', [$instance, 'prependChars']);
         Filters::addFilter('apply_chars', [$instance, 'appendChars']);

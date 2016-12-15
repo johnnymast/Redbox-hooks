@@ -5,7 +5,7 @@ use Redbox\Hooks\Actions;
 
 /**
  * @since version 1.0
- * @covers Actions
+ * @covers Redbox\Hooks\Actions
  */
 class FiltersChainedTest extends \PHPUnit_Framework_TestCase
 {
@@ -24,11 +24,11 @@ class FiltersChainedTest extends \PHPUnit_Framework_TestCase
     }
     
     /**
-     * @covers Actions::doAction
+     * @covers Redbox\Hooks\Actions::doAction
      */
     public function testDoActionWorksCorrectWithOneClassMethod()
     {
-        $actions = new \ReflectionClass('Sandbox\Actions');
+        $actions = new \ReflectionClass('Redbox\Hooks\Actions');
         $property = $actions->getProperty('actions');
         $property->setAccessible(true);
         $property->setValue([]);
@@ -47,11 +47,11 @@ class FiltersChainedTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Actions::doAction
+     * @covers Redbox\Hooks\Actions::doAction
      */
     public function testDoActionWorksCorrectWithTwoClassMethods()
     {
-        $actions = new \ReflectionClass('Sandbox\Actions');
+        $actions = new \ReflectionClass('Redbox\Hooks\Actions');
         $property = $actions->getProperty('actions');
         $property->setAccessible(true);
         $property->setValue([]);

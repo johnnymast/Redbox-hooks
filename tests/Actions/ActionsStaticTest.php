@@ -1,20 +1,22 @@
 <?php
 namespace Redbox\Hooks\Tests\Actions;
 
-use Redbox\Hooks\Actions;
+use Redbox\Hooks\Tests\Actions\Assets\MockClass1;
+use Redbox\Hooks\Actions as Actions;
+use Redbox\Hooks\Hook;
 
 /**
  * @since version 1.0
- * @covers Actions
+ * @covers Redbox\Hooks\Actions
  */
 class ActionsStaticTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @covers Actions::addAction
+     * @covers Redbox\Hooks\Actions::addAction
      */
     public function testAddActionReturnsFalseOnEmptyTag()
     {
-        $actions = new \ReflectionClass('Sandbox\Actions');
+        $actions = new \ReflectionClass('Redbox\Hooks\Actions');
         $property = $actions->getProperty('actions');
         $property->setAccessible(true);
         $property->setValue([]);
@@ -25,11 +27,11 @@ class ActionsStaticTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Actions::addAction
+     * @covers Redbox\Hooks\Actions::addAction
      */
     public function testAddActionReturnsFalseOnEmptyCallback()
     {
-        $actions = new \ReflectionClass('Sandbox\Actions');
+        $actions = new \ReflectionClass('Redbox\Hooks\Actions');
         $property = $actions->getProperty('actions');
         $property->setAccessible(true);
         $property->setValue([]);
@@ -40,11 +42,11 @@ class ActionsStaticTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Actions::addAction
+     * @covers Redbox\Hooks\Actions::addAction
      */
     public function testAddActionReturnsTrueOnSuccess()
     {
-        $actions = new \ReflectionClass('Sandbox\Actions');
+        $actions = new \ReflectionClass('Redbox\Hooks\Actions');
         $property = $actions->getProperty('actions');
         $property->setAccessible(true);
         $property->setValue([]);
@@ -59,11 +61,11 @@ class ActionsStaticTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Actions::addAction
+     * @covers Redbox\Hooks\Actions::addAction
      */
     public function testAddActionAddsActionCorrectly()
     {
-        $actions = new \ReflectionClass('Sandbox\Actions');
+        $actions = new \ReflectionClass('Redbox\Hooks\Actions');
         $property = $actions->getProperty('actions');
         $property->setAccessible(true);
         $property->setValue([]);
@@ -87,11 +89,11 @@ class ActionsStaticTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Actions::addAction
+     * @covers Redbox\Hooks\Actions::addAction
      */
     public function testAddActionAddsMultipleActions()
     {
-        $filters = new \ReflectionClass('Sandbox\Actions');
+        $filters = new \ReflectionClass('Redbox\Hooks\Actions');
         $property = $filters->getProperty('actions');
         $property->setAccessible(true);
         $property->setValue([]);
@@ -120,11 +122,11 @@ class ActionsStaticTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Actions::addAction
+     * @covers Redbox\Hooks\Actions::addAction
      */
     public function testAddActionOrdersPriorityCorrect()
     {
-        $actions = new \ReflectionClass('Sandbox\Actions');
+        $actions = new \ReflectionClass('Redbox\Hooks\Actions');
         $property = $actions->getProperty('actions');
         $property->setAccessible(true);
         $property->setValue([]);
@@ -157,16 +159,16 @@ class ActionsStaticTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Actions::addAction
+     * @covers Redbox\Hooks\Actions::addAction
      */
     public function testAddActionInClassMethodHasTheCorrectCallback()
     {
-        $actions = new \ReflectionClass('Sandbox\Actions');
+        $actions = new \ReflectionClass('Redbox\Hooks\Actions');
         $property = $actions->getProperty('actions');
         $property->setAccessible(true);
         $property->setValue([]);
 
-        $instance = new Sandbox\Tests\Actions\Assets\MockClass1;
+        $instance = new MockClass1;
 
         $tag = 'do_some_things';
         $priority = 10;
@@ -181,7 +183,7 @@ class ActionsStaticTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Actions::removeAction
+     * @covers Redbox\Hooks\Actions::removeAction
      */
     public function testRemoveActionReturnsFalseOnEmptyTag()
     {
@@ -191,7 +193,7 @@ class ActionsStaticTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Actions::removeAction
+     * @covers Redbox\Hooks\Actions::removeAction
      */
     public function testRemoveActionReturnsFalseOnEmptyCallback()
     {
@@ -201,7 +203,7 @@ class ActionsStaticTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Actions::removeAction
+     * @covers Redbox\Hooks\Actions::removeAction
      */
     public function testRemoveActionReturnsTrueOnSuccess()
     {
@@ -217,7 +219,7 @@ class ActionsStaticTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Actions::removeAction
+     * @covers Redbox\Hooks\Actions::removeAction
      */
     public function testRemoveActionReturnsFalseOnFailing()
     {
@@ -227,11 +229,11 @@ class ActionsStaticTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Actions::removeAction
+     * @covers Redbox\Hooks\Actions::removeAction
      */
     public function testRemoveActionRemovesTheActionCorrectly()
     {
-        $actions = new \ReflectionClass('Sandbox\Actions');
+        $actions = new \ReflectionClass('Redbox\Hooks\Actions');
         $property = $actions->getProperty('actions');
         $property->setAccessible(true);
 
@@ -287,7 +289,7 @@ class ActionsStaticTest extends \PHPUnit_Framework_TestCase
          * Test callback is inside a class
          */
         $tag = 'do_some_things';
-        $instance = new Sandbox\Tests\Actions\Assets\MockClass1;
+        $instance = new MockClass1;
         Actions::removeAction($tag, [$instance, 'firstAction']);
 
         $hook = new Hook($tag);
@@ -301,7 +303,7 @@ class ActionsStaticTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Actions::removeAllActions
+     * @covers Redbox\Hooks\Actions::removeAllActions
      */
     public function testRemoveAllActionsReturnsFalseOnEmptyTag()
     {
@@ -314,7 +316,7 @@ class ActionsStaticTest extends \PHPUnit_Framework_TestCase
      * Test that Actions::removeAllActions will return false if the tag was not
      * found/
      *
-     * @covers Actions::removeAllActions
+     * @covers Redbox\Hooks\Actions::removeAllActions
      */
     public function testRemoveAllActionsReturnsFalseIfTagIsNotFound()
     {
@@ -322,7 +324,7 @@ class ActionsStaticTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Actions::removeAllActions
+     * @covers Redbox\Hooks\Actions::removeAllActions
      */
     public function testRemoveAllActionsReturnsTrueOnSuccess()
     {
