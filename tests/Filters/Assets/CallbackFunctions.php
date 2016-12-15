@@ -1,8 +1,6 @@
 <?php
 namespace Redbox\Hooks\Tests\Filters\Assets;
 
-use Redbox\Hooks\Filters;
-
 /**
  * @param string $text
  * @return string
