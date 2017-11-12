@@ -1,4 +1,5 @@
 <?php
+
 namespace Redbox\Hooks;
 
 use Doctrine\Common\Annotations\AnnotationReader;
@@ -6,7 +7,6 @@ use Redbox\Hooks\Annotations\FilterAnnotationHandler;
 
 class Filters
 {
-
     /**
      * @var array
      */
@@ -23,7 +23,7 @@ class Filters
      */
     public static function init()
     {
-        if (!self::$annotation_handler) {
+        if (! self::$annotation_handler) {
             $reader = new AnnotationReader();
             self::$annotation_handler = new FilterAnnotationHandler($reader);
         }
@@ -82,8 +82,10 @@ class Filters
                     }
                 }
             }
+
             return $found;
         }
+
         return false;
     }
 
@@ -100,6 +102,7 @@ class Filters
         if (isset(self::$filters[$tag])) {
             self::$filters[$tag]->removeAllHooks();
             unset(self::$filters[$tag]);
+
             return true;
         }
 
@@ -120,6 +123,7 @@ class Filters
         } else {
             $value = self::execute($filter, $value);
         }
+
         return $value;
     }
 
