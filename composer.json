@@ -1,6 +1,6 @@
 {
   "name": "redbox/hooks",
-  "description": "description_text",
+  "description": "Quickly add filters (or actions) to your content like Wordpress does this. ",
   "minimum-stability": "stable",
   "license": "proprietary",
   "authors": [
