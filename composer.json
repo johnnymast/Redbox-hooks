@@ -9,13 +9,6 @@
       "email": "mastjohnny@gmail.com"
     }
   ],
-  "repositories": [
-    {
-      "type": "composer",
-      "url": "https://packagist.org"
-    },
-    { "packagist": false }
-  ],
   "autoload": {
    "psr-4": {
      "Redbox\\Hooks\\": "src/",
@@ -28,7 +21,6 @@
     }
   },
   "require": {
-    "phpunit/phpunit": "4.8.24",
     "doctrine/common": "2.7.1"
   },
   "require-dev": {
