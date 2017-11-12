@@ -2,7 +2,7 @@
   "name": "redbox/hooks",
   "description": "Quickly add filters (or actions) to your content like Wordpress does this. ",
   "minimum-stability": "stable",
-  "license": "proprietary",
+  "license": "MIT",
   "authors": [
     {
       "name": "Johnny Mast",
